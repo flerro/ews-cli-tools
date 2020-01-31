@@ -1,0 +1,11 @@
+account:
+  email: name.surname@domain.com
+  domain: DOMAIN
+  user: USR1234
+  password: PASSWORD
+ews:
+  server: mail.domain.com
+  chunk: 25
+backup:
+  months: 9
+  delete: False

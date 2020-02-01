@@ -53,5 +53,5 @@ if __name__ == '__main__':
             f.write(content)
         log.info("Text content saved to: %s" % dest_file)
     else:
-        log.info("No text content found")
+        log.info("No text content found in: %s" % dest_file)
 

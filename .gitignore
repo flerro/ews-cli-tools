@@ -3,3 +3,4 @@
 /.idea/
 /conf.yml
 *.pyc
+bin/.idea

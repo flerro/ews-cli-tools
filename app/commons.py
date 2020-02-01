@@ -56,7 +56,7 @@ def write_eml(msg: Message, base_dir: str):
         f.write(msg.mime_content)
 
 
-def process_messages(qs, base_dir, clean_up=False, backup=False):
+def process_messages(qs, base_dir=".", do_delete=False, do_backup=False, do_log=False):
     local_backup = 0
     ignored = 0
     deleted = 0
@@ -68,16 +68,19 @@ def process_messages(qs, base_dir, clean_up=False, backup=False):
 
         if processing_date != msg_date:
             processing_date = msg_date
-            log.info('Processing %s: %s' % (base_dir, processing_date))
+            log.info('Processing date %s to %s' % (processing_date, base_dir))
+
+        if do_log:
+            log.info("Processing item: %s" % msg.subject)
 
         try:
-            if backup and isinstance(msg, Message):
+            if do_backup and isinstance(msg, Message):
                 write_eml(msg, base_dir)
                 local_backup += 1
             else:
                 ignored += 1
 
-            if clean_up:
+            if do_delete:
                 msg.delete()
                 deleted += 1
 

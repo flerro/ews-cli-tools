@@ -24,14 +24,14 @@ def backup_messages(account: Account, until: datetime.date, clean_up=False):
              .order_by('datetime_received') \
              .only('mime_content', 'sender', 'subject', 'datetime_received')
 
-    r1 = process_messages(qs, base_dir=inbox_dir, clean_up=clean_up, backup=True)
+    r1 = process_messages(qs, base_dir=inbox_dir, do_delete=clean_up, do_backup=True)
 
     qs = account.sent.all() \
              .filter(datetime_received__range=(start_date, end_date)) \
              .order_by('datetime_received') \
              .only('mime_content', 'sender', 'subject', 'datetime_received')
 
-    r2 = process_messages(qs, base_dir=sent_dir, clean_up=clean_up, backup=True)
+    r2 = process_messages(qs, base_dir=sent_dir, do_delete=clean_up, do_backup=True)
 
     counter = collections.Counter()
     for d in [r1, r2]:

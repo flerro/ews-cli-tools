@@ -2,3 +2,4 @@
 /venv/
 /.idea/
 /conf.yml
+*.pyc

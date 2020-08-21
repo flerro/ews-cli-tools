@@ -45,7 +45,8 @@ def safe_file_name(s):
 
 def write_eml(msg: Message, base_dir: str):
     msg_date_time = str(msg.datetime_received)[:17]  # strip millis
-    filename = safe_file_name("%s___%s.eml" % (msg_date_time, msg.subject))
+    filename = safe_file_name("%s___%s" % (msg_date_time, msg.subject))
+    filename = "%s.eml" % filename[0:250]
     path = os.path.join(base_dir, msg_date_time[:4], msg_date_time[5:7])
     if 'sent' not in path:
         path = os.path.join(path, msg.sender.email_address)

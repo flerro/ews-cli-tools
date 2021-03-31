@@ -8,7 +8,7 @@ dnspython==1.16.0
 exchangelib==3.1.1
 idna==2.8
 isodate==0.6.0
-lxml==4.5.0
+lxml==4.6.3
 ntlm-auth==1.4.0
 oauthlib==3.1.0
 pycparser==2.19

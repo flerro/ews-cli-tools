@@ -65,16 +65,16 @@ def process_messages(qs, base_dir=".", do_delete=False, do_backup=False, do_log=
     processing_date = '1900-01-01'
 
     for msg in qs:
-        msg_date = str(msg.datetime_received)[:10]
-
-        if processing_date != msg_date:
-            processing_date = msg_date
-            log.info('Processing date %s to %s' % (processing_date, base_dir))
-
-        if do_log:
-            log.info("Processing item: %s" % msg.subject)
-
         try:
+            msg_date = str(msg.datetime_received)[:10]
+
+            if processing_date != msg_date:
+                processing_date = msg_date
+                log.info('Processing date %s to %s' % (processing_date, base_dir))
+
+            if do_log:
+                log.info("Processing item: %s" % msg.subject)
+
             if do_backup and isinstance(msg, Message):
                 write_eml(msg, base_dir)
                 local_backup += 1

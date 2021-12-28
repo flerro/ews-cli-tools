@@ -4,34 +4,38 @@ A set of command line utilities to interact with an exchange server, powered by 
  
 ## Quick start
  
-Clone the repo, create virtualenv and update configuration.
- 
+1. Clone the repo, create virtualenv and update configuration. On Ubuntu derivatives `python-dev` package is required.
+
+    ``` 
     git clone git@github.com:flerro/ews-cli-tools.git ews-cli
     cd ews-cli
     python3 -m venv ./venv
     source ./venv/bin/activate
-    pip install -r requirements.txt    
+    pip install -r requirements.txt  
+    ```
 
-Create the `conf.yml` configuration file, you may refer to `conf.template.yml` for an exapmle) 
+
+
+2. Create the `conf.yml` configuration file, you may refer to `conf.template.yml` for an exapmle) 
  
- ```yaml
-account:
-  email: name.surname@domain.com
-  domain: DOMAIN           
-  user: USR1234
-  password: PASSWORD
-ews:
-  server: mail.domain.com     # OWA server
-  chunk: 25                    # Number of messages downloaded at each iteration, decrease to download big messages
-backup:
-  months: 9                    # Backup messages until n months since today 
-  delete: False                # Delete message after local download?
+    ```yaml
+    account:
+      email: name.surname@domain.com
+      domain: DOMAIN           
+      user: USR1234
+      password: PASSWORD
+    ews:
+      server: mail.domain.com      # OWA server
+      chunk: 25                    # Batch size for each download request
+    backup:
+      months: 9                    # Backup messages until n months since today 
+      delete: False                # Delete message after local download?
 
-```
+    ```
 
-Add the `bin` folder to path    
+3. (optionally) Add the `bin` folder to path    
     
-    export PATH=$PATH:`pwd`/bin
+    `export PATH=$PATH:`pwd`/bin`
   
   
 ## Available Tools

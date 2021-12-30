@@ -1,11 +1,15 @@
 # EWS cli tools
  
 A set of command line utilities to interact with an exchange server, powered by the excellent [exchangelib](https://pypi.org/project/exchangelib/)
+
+Requirements: 
+
+- bash
+- Python 3 
  
 ## Quick start
  
-1. Clone the repo, create virtualenv and update configuration. On Ubuntu derivatives `python-dev` package is required.
-
+1. Clone the repo and create a virtualenv importing the `requirements.txt` file. 
     ``` 
     git clone git@github.com:flerro/ews-cli-tools.git ews-cli
     cd ews-cli
@@ -13,10 +17,10 @@ A set of command line utilities to interact with an exchange server, powered by 
     source ./venv/bin/activate
     pip install -r requirements.txt  
     ```
+   On Ubuntu derivatives `python3-dev` package is required to compile all dependecies.
 
 
-
-2. Create the `conf.yml` configuration file, you may refer to `conf.template.yml` for an exapmle) 
+2. Create the `conf.yml` configuration file, please refer to `conf.template.yml` for an example) 
  
     ```yaml
     account:
@@ -37,10 +41,12 @@ A set of command line utilities to interact with an exchange server, powered by 
     
     `export PATH=$PATH:`pwd`/bin`
   
-   
-## Backup email messages
+
+## Provided tools
+
+### Backup email messages
  
-The `backup.sh` tool will download messages from `inbox` and `sent` folders and store them locally. 
+The `backup.sh` script will download messages from `inbox` and `sent` folders and store them locally. 
 Downloaded messages can be optionally removed from server.
 
 Each message is saved to a self-contained `.eml` file, named after message date-time and subject. 
@@ -77,9 +83,12 @@ Use:
  
 **Please note** that sub-folders under `inbox` and `sent` are currently not processed
  
+
+### Extract text from email
+
+Use the `text_extract.sh` script to extract text from a multipart e-mail message stored in `eml` format.
  
 ## Additional helpful tools
-
 
 Any email client on Linux (e.g. Kmail, Evolution) is able to read the `eml` format.
 

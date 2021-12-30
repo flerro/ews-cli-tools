@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASE_DIR=`dirname $0`
-cd `dirname $BASE_DIR`
+cd $(dirname $0)
+cd ..
 
 if [ ! -f "$1" ]; then
   echo ""

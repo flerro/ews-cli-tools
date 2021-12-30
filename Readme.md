@@ -37,12 +37,10 @@ A set of command line utilities to interact with an exchange server, powered by 
     
     `export PATH=$PATH:`pwd`/bin`
   
-  
-## Available Tools
+   
+## Backup email messages
  
-### Backup email messages
- 
-`backup.sh` tool will download messages from `inbox` and `sent` folders and store them locally. 
+The `backup.sh` tool will download messages from `inbox` and `sent` folders and store them locally. 
 Downloaded messages can be optionally removed from server.
 
 Each message is saved to a self-contained `.eml` file, named after message date-time and subject. 
@@ -71,16 +69,44 @@ account
         ...
 ```
 
-**N.B.** `inbox` and `sent` sub-folders are currently not processed
+This directory structure enable e-mail search by standard unix tools. 
+Use: 
+- `find . -type d ...` to locate a sender, 
+- `find . -name ...` for a specific subject
+- `grep -R ...` to search in message content.
  
-Email message stored as self-contained `.eml` files. Use `google-chrome` or similar to read message content, 
-`munpack` to extract attachments. 
+**Please note** that sub-folders under `inbox` and `sent` are currently not processed
  
+ 
+## Additional helpful tools
+
+
+Any email client on Linux (e.g. Kmail, Evolution) is able to read the `eml` format.
+
+```
+xdg-open filename.eml
+```
+
+Use `mpack` to extract attachments from the command line.
+
  ```bash
 $ sudo apt-get install mpack
 $ munpack email.eml 
 tempdesc.txt: File exists
 image001.jpg.3 (image/jpeg) 
+```
+
+If you have Outlook PST or OST archive laying around, you can extract messages to `eml` format via `readpst`.
+
+```
+$ sudo apt install pst-utils
+$ readpst -o mailbox -e archive.pst
+Opening PST file and indexes...
+Processing Folder "Posta eliminata"
+Processing Folder "Posta in arrivo"
+Processing Folder "Posta in uscita"
+	"Posta eliminata" - 0 items done, 2 items skipped.
+...
 ```
 
 

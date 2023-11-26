@@ -12,7 +12,7 @@ lxml>=4.6.5
 ntlm-auth==1.4.0
 oauthlib==3.1.0
 pycparser==2.19
-Pygments==2.7.4
+Pygments==2.15.0
 python-dateutil==2.8.1
 pytz==2019.3
 PyYAML==5.4

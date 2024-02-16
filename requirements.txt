@@ -2,7 +2,7 @@ cached-property==1.5.1
 certifi==2022.12.7
 cffi==1.13.2
 chardet==3.0.4
-cryptography==39.0.1
+cryptography==42.0.2
 defusedxml==0.6.0
 dnspython==1.16.0
 exchangelib==3.1.1
